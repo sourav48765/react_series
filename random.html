@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>English or Spanish<br>
+        Think fast
+    </h1>
+    <button id="stop">Stop</button>
+</body>
+<script>
+    const saySourav = function() {
+        console.log(`Sourav Bisht`);
+    }
+    
+    const sayLate = function(){
+    document.querySelector('h1').innerHTML = "If you move you're Gay"
+    }
+    const sayNow = function(){
+        document.querySelector('h1').innerHTML = "Okay you passed Boy, you can move now"
+    }
+    const atlast = ()=> {
+        document.querySelector('h1').innerHTML = "Just kidding"
+    }
+    setTimeout(atlast,18000)
+    setTimeout(sayNow,16000)
+    const gayRights = setTimeout(sayLate,2000)
+    setTimeout(sayLate,19000)
+    // setTimeout(saySourav, 2000)
+
+    document.querySelector('#stop').addEventListener('click',function(e){
+        clearTimeout(gayRights)
+        alert(`saved you from abomination`);
+    })
+</script>
+</html>

@@ -1,0 +1,8 @@
+reactnative is an implementation of react for react apps
+while reactDom is an implementation of react for react websites.
+
+we were not able to send multiple tags in the App.jsx so to send multiple tags such as p, h1, and others we need to enclosed them inside a div tag 
+but you can do the same thing by enclosing those multiple tAGS INSIDE A EMPTY TAG such as <> </>
+which is also called as fragments
+
+react take the evaluated expression in it which is basically the final code of javascript as 
