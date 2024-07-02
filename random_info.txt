@@ -1,4 +1,4 @@
-reactnative is an implementation of react for react apps
+reactNative is an implementation of react for react apps
 while reactDom is an implementation of react for react websites.
 
 we were not able to send multiple tags in the App.jsx so to send multiple tags such as p, h1, and others we need to enclosed them inside a div tag 
@@ -6,3 +6,21 @@ but you can do the same thing by enclosing those multiple tAGS INSIDE A EMPTY TA
 which is also called as fragments
 
 react take the evaluated expression in it which is basically the final code of javascript as 
+
+hydartion ---> In React, “hydration” is how React “attaches” to existing HTML that was already rendered by React in a server environment. During hydration, React will attempt to attach event listeners to the existing markup and take over rendering the app on the client.
+
+React Fiber is a powerful tool for building responsive and renderable user interfaces in React applications. It introduces a new reconciliation algorithm that enables incremental rendering, allowing React to split rendering work into chunks and spread it out over multiple frames.
+
+reconciliation
+The algorithm React uses to diff one tree with another to determine which parts need to be changed.
+update
+A change in the data used to render a React app. Usually the result of `setState`. Eventually results in a re-render.
+
+Reconciliation is the algorithm behind what is popularly understood as the "virtual DOM."
+
+https://github.com/acdlite/react-fiber-architecture  ---> for further info about fiber
+
+interview Question - why do we need to use keys in fiber - 
+Answer - "Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
+
+saara code - virtual dom me jaa rha hai - wha compare ho rha - then it is being rendering
