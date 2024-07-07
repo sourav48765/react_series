@@ -24,3 +24,10 @@ interview Question - why do we need to use keys in fiber -
 Answer - "Diffing of lists is performed using keys. Keys should be "stable, predictable, and unique."
 
 saara code - virtual dom me jaa rha hai - wha compare ho rha - then it is being rendering
+
+why we don't use a tag in react and what we use instead of it?
+*Full Page Reloads: The <a> tag by default causes a full page reload. This is contrary to the nature of SPAs, where the goal is to navigate between different views or components without refreshing the entire page.
+
+*Loss of State: A full page reload will reset the application's state. This is particularly problematic in SPAs where maintaining state between views is often crucial.
+
+*Performance: Full page reloads are slower than SPA navigation because the browser has to reload all the assets (HTML, CSS, JavaScript) again.
