@@ -22,8 +22,7 @@ function Select({
                 </option>
             ))}
         </select>
-    
-    Select</div>
+    </div>
   )
 }
 
