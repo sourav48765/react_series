@@ -18,6 +18,6 @@ function PostCard({$id, title, featuredImage}) {
         </div>
     </Link>
   )
-}x
+}
 
 export default PostCard
