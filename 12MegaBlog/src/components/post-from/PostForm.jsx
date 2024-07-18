@@ -6,11 +6,11 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 
-function PostForm({post}) {
+export default function PostForm({post}) {
     const {register, handleSubmit, getValues, watch, setValue, control} = useForm({
         defaultValues:{
             title: post?.title || "",
-            slug: post?.slug || "",
+            slug: post?.$id || "",
             content: post?.content || "",
             status: post?.status || "active",
 
@@ -18,11 +18,11 @@ function PostForm({post}) {
     })
 
     const navigate = useNavigate();
-    const user = useSelector(state => state.user.userData)
+    const userData = useSelector((state) => state.auth.userData);
 
     const submit = async (data) => {
         if(post){
-            const file = data.image[0] ? appwriteService.uploadFile(data.image[0]) : null
+            const file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null
 
             if(file){
                 appwriteService.deleteFile(post.featuredImage)
@@ -42,7 +42,7 @@ function PostForm({post}) {
             if(file){
                 const fileId = file.$id
                 data.featuredImage = fileId
-                const dbPost = appwriteService.createPost({
+                const dbPost = await appwriteService.createPost({
                     ...data,
                     userId: userData.$id,
                 }) 
@@ -55,11 +55,11 @@ function PostForm({post}) {
     }
 
     const slugTransform = useCallback((value) => {
-        if(value && typeof value === String)
+        if(value && typeof value === "string")
             return value
                 .trim()
                 .toLowerCase()
-                .replace(/^[a-zA-Z\d\s]+/g,'-')
+                .replace(/[^a-zA-Z\d\s]+/g,'-')
                 .replace(/\s/g,'-')
 
         return ''        
@@ -68,12 +68,10 @@ function PostForm({post}) {
     React.useEffect(() => {
         const subscription = watch((value, {name}) => {
             if(name === 'title'){
-                setValue('slug', slugTransform(value.title,
-                    {shouldValidate: true}
-                ))
+                setValue('slug', slugTransform(value.title),{shouldValidate: true})
             }
 
-        })
+        });
 
         return () => {
             subscription.unsubscribe()
@@ -106,7 +104,7 @@ function PostForm({post}) {
                 label="Featured Image :"
                 type="file"
                 className="mb-4"
-                accept="image/png, image/jpg, image/jpeg, image/gif"
+                accept="image/png, image/jpg, image/jpeg, image/gif, image/WebP, image/webp"
                 {...register("image", { required: !post })}
             />
             {post && (
@@ -132,4 +130,3 @@ function PostForm({post}) {
   )
 }
 
-export default PostForm
